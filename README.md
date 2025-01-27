@@ -1,8 +1,9 @@
-# Remix Starter
+# Remix MongoDB
 
 [tailwindcss](https://tailwindcss.com/)와 [shadcn/ui](https://ui.shadcn.com/)가 적용된 [Remix](https://remix.run/) 스타터 탬플릿입니다.
 라이트&다크 테마 변경과 다국어 현지화 언어셋을 사용할 수 있습니다.
 [Ajv](https://ajv.js.org/)가 포함되어 있으므로 데이터 구조의 유효성 검사는 [JSON schema](https://json-schema.org/) 형식을 사용하는 것을 권장합니다.
+데이터베이스는 MongoDB와 Redis를 사용할 수 있습니다. MongoDB는 [mongoose](https://mongoosejs.com/), Redis는 [ioredis](https://github.com/redis/ioredis)를 사용합니다.
 
 ## 시작하기
 
@@ -93,6 +94,7 @@ yarn start
 │   │   ├── en              # 영어 네임스페이스 언어셋
 │   │   ├── ko              # 한국어 네임스페이스 언어셋
 │   │   └── types.d.ts      # 언어 JSON 파일 타입 정의
+│   ├── models              # Mongoose 스키마 모델
 │   ├── root.tsx            # 리믹스 Root 파일
 │   ├── routes              # 리믹스 Routes 폴더
 │   └── styles              # CSS 폴더
