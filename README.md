@@ -10,7 +10,7 @@
 아래 `create-remix` 커맨드로 신규 리믹스 프로젝트를 시작합니다.
 
 ```bash
-npx create-remix@latest --template crispy43/remix-starter
+npx create-remix@latest --template crispy43/remix-mongodb
 ```
 
 내부적으로 Yarn 패키지 매니저를 사용하기 때문에, 두번째 `deps   Install dependencies with npm?` 질문에서 No를 선택하고 패키지를 yarn 커맨드로 수동 설치해야 합니다.
