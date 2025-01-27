@@ -1,3 +1,5 @@
+import type { Schema } from 'mongoose';
+
 // * JSON 직렬화 타입 추론
 export type ToJson<T> = T extends string | number | boolean | null
   ? T // 기본 타입은 그대로 반환
@@ -17,6 +19,8 @@ export type ToJson<T> = T extends string | number | boolean | null
   ? { [K in keyof T]: ToJson<T[K]> } // Map 처리
   : T extends Set<any>
   ? Array<ToJson<T extends Set<infer U> ? U : never>> // Set은 배열로 변환
+  : T extends Schema.Types.ObjectId
+  ? string // Mongoose ObjectId는 string으로 변환
   : T extends Date
   ? string // Date는 ISO 문자열로 변환
   : T extends Array<infer U>
