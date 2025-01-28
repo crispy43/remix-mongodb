@@ -8485,9 +8485,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remix-starter@workspace:.":
+"remix-mongodb@workspace:.":
   version: 0.0.0-use.local
-  resolution: "remix-starter@workspace:."
+  resolution: "remix-mongodb@workspace:."
   dependencies:
     "@radix-ui/react-icons": "npm:^1.3.0"
     "@radix-ui/react-label": "npm:^2.1.1"
