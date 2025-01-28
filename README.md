@@ -241,12 +241,12 @@ i18n 관련 라이브러리를 사용하지 않지만, 본 프로젝트에서는
 
 #### localize
 
-언어별 텍스트 정의는 `/app/locales/{languageCode}/` 경로에 JSON 파일로 저장하면 됩니다. 영어는 `/app/locales/en/`, 한국어는 `/app/locales/ko/` 아래에 JSON 파일을 저장하는 식입니다. `common.json`은 공통 언어 파일로 기본 네임스페이스가 되고 다른 네임스페이스에 언어 정의를 상속합니다. 이외 파일들은 각 파일 명으로 네임스페이스가 지정됩니다. 예를 들어 `welcome.json`파일은 네임스페이스가 `welcome`이 되므로 welcome 언어셋을 가져오려면 리믹스 `loader` 구문에서 아래 코드처럼 가져옵니다.
+언어별 텍스트 정의는 `/app/.server/locales/{languageCode}/` 경로에 JSON 파일로 저장하면 됩니다. 영어는 `/app/.server/locales/en/`, 한국어는 `/app/.server/locales/ko/` 아래에 JSON 파일을 저장하는 식입니다. `common.json`은 공통 언어 파일로 기본 네임스페이스가 되고 다른 네임스페이스에 언어 정의를 상속합니다. 이외 파일들은 각 파일 명으로 네임스페이스가 지정됩니다. 예를 들어 `welcome.json`파일은 네임스페이스가 `welcome`이 되므로 welcome 언어셋을 가져오려면 리믹스 `loader` 구문에서 아래 코드처럼 가져옵니다.
 
 ```typescript
 import { LoaderFunctionArgs } from '@remix-run/node';
 import { localize } from '~/.server/lib/localization';
-import { WelcomeJson } from '~/locales/types';
+import { WelcomeJson } from '~/.server/locales/types';
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const t = await localize<WelcomeJson>(request, 'welcome');
@@ -254,7 +254,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 };
 ```
 
-`localize()` 함수를 사용할 때, 위 코드처럼 `/app/locales/types.d.ts` 파일에 정의된 타입을 제네릭으로 주입하여 사용하는 언어셋 `t`의 타입 추론을 할 수 있습니다. JSON 언어 파일을 생성할 때 `/app/locales/types.d.ts`에 타입 정의도 함께 해주면 됩니다.
+`localize()` 함수를 사용할 때, 위 코드처럼 `/app/.server/locales/types.d.ts` 파일에 정의된 타입을 제네릭으로 주입하여 사용하는 언어셋 `t`의 타입 추론을 할 수 있습니다. JSON 언어 파일을 생성할 때 `types.d.ts`에 타입 정의도 함께 해주면 됩니다.
 
 ```json
 {
@@ -270,8 +270,8 @@ export type WelcomeJson = typeof import('../locales/en/welcome.json');
 화면에 언어 텍스트 적용 아래 코드처럼 `t`를 `useJsonLoaderData` 훅으로 가져와서 사용합니다.
 
 ```tsx
-// /app/locales/en/welcome.json = { "welcome": "Welcome to Remix!" }
-// /app/locales/ko/welcome.json = { "welcome": "Remix에 오신 것을 환영합니다!" }
+// /app/.server/locales/en/welcome.json = { "welcome": "Welcome to Remix!" }
+// /app/.server/locales/ko/welcome.json = { "welcome": "Remix에 오신 것을 환영합니다!" }
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const t = await localize<WelcomeJson>(request, 'welcome');
