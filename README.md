@@ -81,6 +81,11 @@ yarn start
 │   ├── .server             # Vite 서버사이드 전용 폴더
 │   │   ├── controllers     # Request&Response 컨트롤러
 │   │   ├── lib             # 유틸리티 (서버 사이드에서만 사용)
+│   │   ├── locales         # 다국어 언어셋 폴더
+│   │   │   ├── en          # 영어 네임스페이스 언어셋
+│   │   │   ├── ko          # 한국어 네임스페이스 언어셋
+│   │   │   └── types.d.ts  # 언어 JSON 파일 타입 정의
+│   │   ├── models          # Mongoose 스키마 모델
 │   │   ├── schemas         # 요청 파라미터 유효성 검증 JSON Schema
 │   │   └── services        # 서비스 로직
 │   ├── common              # 공통
@@ -90,11 +95,6 @@ yarn start
 │   ├── entry.server.tsx    # 리믹스 서버 렌더링
 │   ├── hooks               # 커스텀 훅
 │   ├── lib                 # 유틸리티
-│   ├── locales             # 다국어 언어셋 폴더
-│   │   ├── en              # 영어 네임스페이스 언어셋
-│   │   ├── ko              # 한국어 네임스페이스 언어셋
-│   │   └── types.d.ts      # 언어 JSON 파일 타입 정의
-│   ├── models              # Mongoose 스키마 모델
 │   ├── root.tsx            # 리믹스 Root 파일
 │   ├── routes              # 리믹스 Routes 폴더
 │   └── styles              # CSS 폴더
